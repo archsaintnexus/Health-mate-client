@@ -12,9 +12,9 @@
   --color-white: #FFFFFF;
 
   /* Light Mode Semantic Mapping */
-  --background: var(--color-white);
+  --background: var(--color-surface-ghost-white);
   --foreground: var(--color-surface-dark);
-  --muted: var(--color-surface-ghost-white);
+  --muted: var(--color-white);
   --accent: var(--color-surface-light-blue);
   --primary: var(--color-brand-primary);
   --primary-hover: var(--color-brand-secondary);
@@ -34,9 +34,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark Mode Semantic Mapping */
-    --background: var(--color-black);
+    --background: var(--color-surface-dark);
     --foreground: var(--color-white);
-    --muted: var(--color-surface-dark);
+    --muted: var(--color-black);
     --accent: var(--color-brand-dark);
     --primary: var(--color-brand-primary);
     --primary-hover: var(--color-brand-secondary);

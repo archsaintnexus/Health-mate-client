@@ -19,7 +19,7 @@ export function Navbar() {
     const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
     return (
-        <header className="w-full bg-background border-b border-foreground/10 px-6 md:px-8 py-4 sticky top-0 z-50">
+        <header className="w-full bg-white border-b border-foreground/10 px-6 md:px-8 py-4 sticky top-0 z-50">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 {/* Logo */}
                 <div className="flex items-center">

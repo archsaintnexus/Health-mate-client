@@ -13,8 +13,8 @@ export function Footer() {
 
     return (
         <footer className="bg-primary text-white pt-16 pb-8 px-6 md:px-12 w-full">
-            <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+            <div className="max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 items-center">
 
                     {/* Brand Info Column */}
                     <div className="flex flex-col gap-6">
