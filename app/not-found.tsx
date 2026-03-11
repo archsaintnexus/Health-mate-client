@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { FaHeartbeat } from 'react-icons/fa';
+import { IconWrapper } from './components/IconWrapper';
 
 export default function NotFound() {
     return (
         <div className="flex flex-col items-center justify-center min-h-[70vh] px-6 text-center">
-            <div className="flex items-center justify-center mb-8 text-primary">
+            <IconWrapper variant="simple" className="mb-8 text-primary">
                 <FaHeartbeat className="text-6xl animate-pulse" />
-            </div>
+            </IconWrapper>
             <h1 className="text-7xl font-bold text-primary mb-4">404</h1>
             <h2 className="text-3xl font-semibold text-foreground mb-4">Page Not Found</h2>
             <p className="text-foreground/80 max-w-md mb-10 leading-relaxed">

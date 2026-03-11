@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { FaHeartbeat, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { IconWrapper } from '../components/IconWrapper';
 
 export function Footer() {
     const quickLinks = [
@@ -19,7 +20,9 @@ export function Footer() {
                     {/* Brand Info Column */}
                     <div className="flex flex-col gap-6">
                         <div className="flex items-center gap-2">
-                            <FaHeartbeat className="text-3xl" />
+                            <IconWrapper variant="simple">
+                                <FaHeartbeat className="text-3xl" />
+                            </IconWrapper>
                             <span className="text-2xl font-bold tracking-tight">HealthMate</span>
                         </div>
                         <p className="text-sm leading-relaxed text-white/90 max-w-sm">
@@ -27,13 +30,19 @@ export function Footer() {
                         </p>
                         <div className="flex items-center gap-6 mt-2">
                             <a href="#" className="hover:text-white/80 transition-colors" aria-label="Twitter">
-                                <FaTwitter className="text-xl" />
+                                <IconWrapper variant="simple">
+                                    <FaTwitter className="text-xl" />
+                                </IconWrapper>
                             </a>
                             <a href="#" className="hover:text-white/80 transition-colors" aria-label="LinkedIn">
-                                <FaLinkedinIn className="text-xl" />
+                                <IconWrapper variant="simple">
+                                    <FaLinkedinIn className="text-xl" />
+                                </IconWrapper>
                             </a>
                             <a href="#" className="hover:text-white/80 transition-colors" aria-label="Instagram">
-                                <FaInstagram className="text-xl" />
+                                <IconWrapper variant="simple">
+                                    <FaInstagram className="text-xl" />
+                                </IconWrapper>
                             </a>
                         </div>
                     </div>

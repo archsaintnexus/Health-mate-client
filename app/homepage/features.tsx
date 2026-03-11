@@ -1,29 +1,30 @@
 import Image from 'next/image';
 import { LuUsers, LuVideo, LuPill, LuFlaskConical } from 'react-icons/lu';
+import { IconWrapper } from '../components/IconWrapper';
 
 const quickActions = [
     {
         title: "Find Doctors",
         description: "Locate Your Nearest Doctor and Book Instantly",
-        icon: <LuUsers className="w-6 h-6 text-primary" />,
+        icon: <IconWrapper variant="simple"><LuUsers className="w-6 h-6 text-primary" /></IconWrapper>,
         bgColor: "bg-blue-50"
     },
     {
         title: "Online Consultation",
         description: "Get medical advice without visiting a clinic.",
-        icon: <LuVideo className="w-6 h-6 text-primary" />,
+        icon: <IconWrapper variant="simple"><LuVideo className="w-6 h-6 text-primary" /></IconWrapper>,
         bgColor: "bg-blue-50"
     },
     {
         title: "Find Pharmacy",
         description: "Find Pharmacy and Refill Prescription Easily",
-        icon: <LuPill className="w-6 h-6 text-primary" />,
+        icon: <IconWrapper variant="simple"><LuPill className="w-6 h-6 text-primary" /></IconWrapper>,
         bgColor: "bg-blue-50"
     },
     {
         title: "Find Labs",
         description: "Discover Nearby Labs For Quick and Easy Testing",
-        icon: <LuFlaskConical className="w-6 h-6 text-primary" />,
+        icon: <IconWrapper variant="simple"><LuFlaskConical className="w-6 h-6 text-primary" /></IconWrapper>,
         bgColor: "bg-blue-50"
     }
 ];
@@ -57,9 +58,9 @@ export default function Features() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
                         {quickActions.map((action, index) => (
                             <div key={index} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center group hover:shadow-md transition-shadow">
-                                <div className={`${action.bgColor} w-16 h-16 rounded-full flex items-center justify-center mb-6`}>
+                                <IconWrapper variant="default" bgClassName={action.bgColor}>
                                     {action.icon}
-                                </div>
+                                </IconWrapper>
                                 <h3 className="text-xl font-bold text-foreground mb-3">{action.title}</h3>
                                 <p className="text-sm text-foreground/60 leading-relaxed">
                                     {action.description}

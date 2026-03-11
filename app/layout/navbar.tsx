@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../components/Button';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { IconWrapper } from '../components/IconWrapper';
 
 export function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -60,7 +61,15 @@ export function Navbar() {
                     onClick={toggleMenu}
                     aria-label="Toggle Navigation Menu"
                 >
-                    {isMobileMenuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+                    {isMobileMenuOpen ? (
+                        <IconWrapper variant="simple">
+                            <FiX size={28} />
+                        </IconWrapper>
+                    ) : (
+                        <IconWrapper variant="simple">
+                            <FiMenu size={28} />
+                        </IconWrapper>
+                    )}
                 </button>
             </div>
 

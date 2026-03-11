@@ -2,6 +2,7 @@
 
 import { LuPhone, LuMail, LuMapPin } from 'react-icons/lu';
 import { Button } from '../components/Button';
+import { IconWrapper } from '../components/IconWrapper';
 
 export default function Contact() {
     return (
@@ -14,23 +15,23 @@ export default function Contact() {
 
                         <div className="space-y-8">
                             <div className="flex items-center gap-6 group">
-                                <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                <IconWrapper variant="circle">
                                     <LuPhone className="w-6 h-6" />
-                                </div>
+                                </IconWrapper>
                                 <span className="text-lg lg:text-xl font-medium text-foreground/80 lowercase">+234 706 234 0597</span>
                             </div>
 
                             <div className="flex items-center gap-6 group">
-                                <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                <IconWrapper variant="circle">
                                     <LuMail className="w-6 h-6" />
-                                </div>
+                                </IconWrapper>
                                 <span className="text-lg lg:text-xl font-medium text-foreground/80">Contact@healthmate.com</span>
                             </div>
 
                             <div className="flex items-center gap-6 group text-left">
-                                <div className="shrink-0 w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                <IconWrapper variant="circle" className="shrink-0">
                                     <LuMapPin className="w-6 h-6" />
-                                </div>
+                                </IconWrapper>
                                 <span className="text-lg lg:text-xl font-medium text-foreground/80 leading-snug">
                                     123 Health St, Medical City <br /> Ikeja, Lagos
                                 </span>

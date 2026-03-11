@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { LuChevronDown } from 'react-icons/lu';
+import { IconWrapper } from '../components/IconWrapper';
 
 const faqData = [
     {
@@ -53,9 +54,11 @@ export default function FAQ() {
                                     <span className="text-base lg:text-lg font-bold text-foreground pr-8">
                                         {item.question}
                                     </span>
-                                    <LuChevronDown
-                                        className={`w-5 h-5 text-primary transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
-                                    />
+                                    <IconWrapper variant="simple">
+                                        <LuChevronDown
+                                            className={`w-5 h-5 text-primary transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
+                                        />
+                                    </IconWrapper>
                                 </button>
 
                                 <div

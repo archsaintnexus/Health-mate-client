@@ -12,7 +12,7 @@ export default function Appointments() {
                             Helping You <span className="text-primary">Stay Healthy, <br />Anytime</span>, Anywhere
                         </h2>
                         <p className="text-sm lg:text-base text-foreground/70 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                            At HealthMate, we're committed to providing accessible high-quality healthcare for everyone.
+                            At HealthMate, we&apos;re committed to providing accessible high-quality healthcare for everyone.
                             Our platform allows you to consult with experienced doctors at your convenience,
                             ensuring you get the care when you need it.
                         </p>
