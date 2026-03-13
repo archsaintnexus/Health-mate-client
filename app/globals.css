@@ -11,6 +11,7 @@
   --color-black: #000000;
   --color-white: #FFFFFF;
 
+
   /* Light Mode Semantic Mapping */
   --background: var(--color-surface-ghost-white);
   --foreground: var(--color-surface-dark);
