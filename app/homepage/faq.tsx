@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { LuChevronDown } from 'react-icons/lu';
 import { IconWrapper } from '../components/IconWrapper';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const faqData = [
     {
@@ -31,47 +32,87 @@ export default function FAQ() {
     };
 
     return (
-        <section className="py-10 lg:py-15">
+        <section className="py-10 lg:py-20">
             <div className="container mx-auto px-6 lg:px-12">
-                <div className="text-center mb-16">
+                <motion.div 
+                    initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
+                >
                     <h2 className="text-2xl md:text-4xl font-bold text-foreground">
-                        Frequently Ask Questions
+                        Frequently Asked Questions
                     </h2>
-                </div>
+                </motion.div>
 
-                <div className="max-w-4xl mx-auto bg-white rounded-2xl p-4 lg:p-12 shadow-sm border border-slate-50">
-                    <div className="flex flex-col gap-4">
+                <motion.div 
+                    initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    viewport={{ once: true }}
+                    className="max-w-4xl mx-auto bg-white rounded-[32px] p-4 lg:p-12 shadow-xl shadow-slate-200/50 border border-slate-100"
+                >
+                    <motion.div 
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true }}
+                        variants={{
+                            hidden: { opacity: 0 },
+                            show: {
+                                opacity: 1,
+                                transition: {
+                                    staggerChildren: 0.1
+                                }
+                            }
+                        }}
+                        className="flex flex-col gap-4"
+                    >
                         {faqData.map((item, index) => (
-                            <div
+                            <motion.div
                                 key={index}
-                                className={`border border-blue-100 rounded-xl overflow-hidden transition-all duration-300 ${openIndex === index ? 'bg-blue-50/30' : 'bg-white'}`}
+                                variants={{
+                                    hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+                                    show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+                                }}
+                                className={`border border-blue-100 rounded-2xl overflow-hidden transition-colors duration-300 ${openIndex === index ? 'bg-blue-50/30 ring-1 ring-primary/10' : 'bg-white hover:bg-slate-50'}`}
                             >
                                 <button
-                                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors focus:outline-none"
+                                    className="w-full px-6 py-6 flex items-center justify-between text-left focus:outline-none group"
                                     onClick={() => toggleAccordion(index)}
                                     aria-expanded={openIndex === index}
                                 >
-                                    <span className="text-base lg:text-lg font-bold text-foreground pr-8">
+                                    <span className={`text-base lg:text-lg font-bold transition-colors duration-300 ${openIndex === index ? 'text-primary' : 'text-foreground'}`}>
                                         {item.question}
                                     </span>
-                                    <IconWrapper variant="simple">
-                                        <LuChevronDown
-                                            className={`w-5 h-5 text-primary transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
-                                        />
-                                    </IconWrapper>
+                                    <motion.div
+                                        animate={{ rotate: openIndex === index ? 180 : 0 }}
+                                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                    >
+                                        <IconWrapper variant="simple" className={openIndex === index ? 'text-primary' : 'text-slate-400 group-hover:text-primary'}>
+                                            <LuChevronDown className="w-5 h-5" />
+                                        </IconWrapper>
+                                    </motion.div>
                                 </button>
 
-                                <div
-                                    className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-                                >
-                                    <div className="px-6 pb-6 text-foreground/70 leading-relaxed text-sm lg:text-base">
-                                        {item.answer}
-                                    </div>
-                                </div>
-                            </div>
+                                <AnimatePresence>
+                                    {openIndex === index && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                        >
+                                            <div className="px-6 pb-6 text-foreground/70 leading-relaxed text-sm lg:text-base border-t border-blue-50/50 pt-4">
+                                                {item.answer}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );
