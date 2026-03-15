@@ -52,7 +52,7 @@ const mainFeatures = [
 
 export default function Features() {
     return (
-        <section className="relative z-20">
+        <section id="features" className="relative z-20">
             {/* Main Features Section  */}
             <div className="bg-white rounded-[40px] md:rounded-[80px] border border-accent pt-1 pb-15">
                 {/* Quick Action Container*/}

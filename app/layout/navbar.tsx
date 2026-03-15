@@ -10,7 +10,46 @@ import { IconWrapper } from '../components/IconWrapper';
 
 export function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState<string>('');
     const pathname = usePathname();
+
+    // Intersection Observer to track scroll position and update active section
+    useEffect(() => {
+        const sections = ['about', 'features', 'contact'];
+        const sectionElements = sections
+            .map(id => document.getElementById(id))
+            .filter((el): el is HTMLElement => el !== null);
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-10% 0px -80% 0px',
+            threshold: 0,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        sectionElements.forEach(el => observer.observe(el));
+
+        // Special case for top of page (Home)
+        const handleScroll = () => {
+            if (window.scrollY < 100) {
+                setActiveSection('');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     // Prevent scrolling when mobile menu is open
     useEffect(() => {
@@ -26,9 +65,9 @@ export function Navbar() {
 
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'About Us', href: '/about' },
-        { name: 'Features', href: '/features' },
-        { name: 'Contact', href: '/contact' },
+        { name: 'About Us', href: '#about' },
+        { name: 'Features', href: '#features' },
+        { name: 'Contact', href: '#contact' },
     ];
 
     const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -38,7 +77,7 @@ export function Navbar() {
             <div className="max-w-6xl mx-auto flex justify-between items-center">
                 {/* Logo */}
                 <div className="flex items-center">
-                    <Link href="/">
+                    <Link href="/" onClick={() => setActiveSection('')}>
                         <Image
                             src="/health-mate.png"
                             alt="HealthMate Logo"
@@ -53,7 +92,12 @@ export function Navbar() {
                 {/* Desktop Navigation Links */}
                 <nav className="hidden md:flex items-center gap-10">
                     {navLinks.map((link) => {
-                        const isActive = pathname === link.href;
+                        const isHome = link.href === '/';
+                        const linkId = link.href.startsWith('#') ? link.href.slice(1) : '';
+                        const isActive = isHome 
+                            ? (activeSection === '' && pathname === '/')
+                            : activeSection === linkId;
+
                         return (
                             <Link
                                 key={link.name}
@@ -96,7 +140,7 @@ export function Navbar() {
                 <div className="md:hidden fixed inset-0 w-full h-screen bg-white z-60 flex flex-col p-6 overflow-y-auto">
                     <div className="flex justify-between items-center mb-16">
                         {/* Logo inside overlay */}
-                        <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Link href="/" onClick={() => { setIsMobileMenuOpen(false); setActiveSection(''); }}>
                             <Image
                                 src="/health-mate.png"
                                 alt="HealthMate Logo"
@@ -120,7 +164,12 @@ export function Navbar() {
 
                     <nav className="flex flex-col items-center gap-8 font-semibold text-2xl">
                         {navLinks.map((link) => {
-                            const isActive = pathname === link.href;
+                            const isHome = link.href === '/';
+                            const linkId = link.href.startsWith('#') ? link.href.slice(1) : '';
+                            const isActive = isHome 
+                                ? (activeSection === '' && pathname === '/')
+                                : activeSection === linkId;
+
                             return (
                                 <Link
                                     key={link.name}

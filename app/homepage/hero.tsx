@@ -17,10 +17,10 @@ export default function Hero() {
                             that connects you to trusted care.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                            <Button className="w-full sm:w-auto px-10 py-4 text-base font-bold">
+                            <Button className="w-full sm:w-auto px-4 py-3 text-base font-bold">
                                 Book Appointment
                             </Button>
-                            <Button variant="outline" className="w-full sm:w-auto px-10 py-4 text-base font-bold bg-blue-50/50">
+                            <Button variant="outline" className="w-full sm:w-auto px-12 py-3 text-base font-bold hover:bg-primary/80 hover:text-white">
                                 Learn More
                             </Button>
                         </div>

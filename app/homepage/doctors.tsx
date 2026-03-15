@@ -25,13 +25,13 @@ const doctors = [
 
 export default function Doctors() {
     return (
-        <section className="py-20 lg:py-32 bg-background">
+        <section id="doctors" className="py-20 lg:py-32 bg-background">
             <div className="container mx-auto px-6 lg:px-16">
                 <div className="text-center mb-16 max-w-3xl mx-auto">
-                    <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+                    <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-6">
                         Top-Rated Doctors
                     </h2>
-                    <p className="text-sm lg:text-base text-foreground/70 leading-relaxed">
+                    <p className="text-sm md:text-base text-foreground leading-relaxed">
                         Our board certified physicians are among the best in medical care, averaging 15 years of
                         clinical experience. They are committed to providing high-quality, personalized care
                         you can trust.
@@ -40,8 +40,8 @@ export default function Doctors() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {doctors.map((doctor, index) => (
-                        <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-blue-50 hover:shadow-md transition-shadow">
-                            <div className="relative aspect-4/5 bg-slate-50">
+                        <div key={index} className="bg-white rounded-2xl overflow-hidden border border-[#D1D5DC] hover:shadow-md transition-shadow">
+                            <div className="relative aspect-4/5 bg-background">
                                 <Image
                                     src={doctor.image}
                                     alt={doctor.name}
@@ -49,11 +49,11 @@ export default function Doctors() {
                                     className="object-cover"
                                 />
                             </div>
-                            <div className="p-6">
-                                <h3 className="text-lg font-bold text-foreground mb-1">
+                            <div className="p-4">
+                                <h3 className="text-lg font-semibold text-foreground mb-1">
                                     {doctor.name}
                                 </h3>
-                                <p className="text-xs font-medium text-foreground/40 uppercase tracking-wider">
+                                <p className="text-md font-medium text-foreground uppercase tracking-wider">
                                     {doctor.specialty}
                                 </p>
                             </div>
