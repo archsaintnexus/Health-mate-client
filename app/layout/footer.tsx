@@ -1,73 +1,112 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
-import { FaHeartbeat, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+import { motion, Variants } from 'framer-motion';
 
 export function Footer() {
     const quickLinks = [
         { name: 'Home', href: '/' },
-        { name: 'About', href: '/about' },
-        { name: 'Features', href: '/features' },
-        { name: 'Doctors', href: '/doctors' },
-        { name: 'Contact', href: '/contact' },
+        { name: 'About', href: '#about' },
+        { name: 'Features', href: '#features' },
+        { name: 'Doctors', href: '#doctors' },
+        { name: 'Contact', href: '#contact' },
     ];
 
+    const containerVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants: Variants = {
+        hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
+        visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } }
+    };
+
     return (
-        <footer className="bg-primary text-white pt-16 pb-8 px-6 md:px-12 w-full">
+        <footer className="bg-primary text-white pt-16 pb-8 px-6 md:px-16 w-full lg:px-24">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={containerVariants}
+                    className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-12 md:gap-20 items-start"
+                >
 
                     {/* Brand Info Column */}
-                    <div className="flex flex-col gap-6">
-                        <div className="flex items-center gap-2">
-                            <FaHeartbeat className="text-3xl" />
-                            <span className="text-2xl font-bold tracking-tight">HealthMate</span>
+                    <motion.div variants={itemVariants} className="flex flex-col gap-6">
+                        <div className="flex items-center">
+                            <Image
+                                src="/health-mate.png"
+                                alt="HealthMate Logo"
+                                width={160}
+                                height={40}
+                                className="h-8 md:h-10 w-auto brightness-0 invert"
+                            />
                         </div>
-                        <p className="text-sm leading-relaxed text-white/90 max-w-sm">
+                        <p className="text-base leading-relaxed text-white/90 max-w-sm">
                             Seamlessly connect patients with certified healthcare professionals through secure consultations, protected health records, and reliable, compassionate care.
                         </p>
-                        <div className="flex items-center gap-6 mt-2">
-                            <a href="#" className="hover:text-white/80 transition-colors" aria-label="Twitter">
-                                <FaTwitter className="text-xl" />
-                            </a>
-                            <a href="#" className="hover:text-white/80 transition-colors" aria-label="LinkedIn">
-                                <FaLinkedinIn className="text-xl" />
-                            </a>
-                            <a href="#" className="hover:text-white/80 transition-colors" aria-label="Instagram">
-                                <FaInstagram className="text-xl" />
-                            </a>
+                        <div className="flex items-center gap-4 mt-2">
+                            <motion.a whileHover={{ scale: 1.2, rotate: -10 }} whileTap={{ scale: 0.9 }} href="#" className="hover:text-white/80 transition-colors" aria-label="X (formerly Twitter)">
+                                <FaXTwitter className="text-2xl" />
+                            </motion.a>
+                            <motion.a whileHover={{ scale: 1.2, y: -2 }} whileTap={{ scale: 0.9 }} href="#" className="hover:text-white/80 transition-colors" aria-label="LinkedIn">
+                                <FaLinkedinIn className="text-2xl" />
+                            </motion.a>
+                            <motion.a whileHover={{ scale: 1.2, rotate: 10 }} whileTap={{ scale: 0.9 }} href="#" className="hover:text-white/80 transition-colors" aria-label="Instagram">
+                                <FaInstagram className="text-2xl" />
+                            </motion.a>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Quick Links Column */}
-                    <div className="flex flex-col gap-4">
-                        <h3 className="text-xl font-semibold mb-2">Quick Links</h3>
-                        <ul className="flex flex-col gap-3">
+                    <motion.div variants={itemVariants} className="flex flex-col gap-4">
+                        <h3 className="text-2xl font-semibold mb-2">Quick Links</h3>
+                        <ul className="flex flex-col gap-2">
                             {quickLinks.map((link) => (
-                                <li key={link.name}>
+                                <motion.li key={link.name} whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm text-white/90 hover:underline hover:text-white transition-all"
+                                        className="text-base text-white/90 hover:text-white transition-all relative group"
                                     >
                                         {link.name}
+                                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
                                     </Link>
-                                </li>
+                                </motion.li>
                             ))}
                         </ul>
-                    </div>
+                    </motion.div>
 
                     {/* Open Hours Column */}
-                    <div className="flex flex-col gap-4">
-                        <h3 className="text-xl font-semibold mb-2">Open Hours</h3>
-                        <p className="text-sm text-white/90 leading-relaxed">
+                    <motion.div variants={itemVariants} className="flex flex-col gap-4 text-left">
+                        <h3 className="text-2xl font-semibold mb-2">Open Hours</h3>
+                        <p className="text-base text-white/90 leading-relaxed">
                             Open 24/7 - Virtual Care Anytime, Anywhere
                         </p>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* Bottom Bar */}
-                <div className="mt-16 pt-8 text-center text-sm text-white/90">
+                <motion.div
+                    initial={{ opacity: 0, filter: "blur(5px)" }}
+                    whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    viewport={{ once: true }}
+                    className="mt-8 text-center text-sm"
+                >
                     <p>&copy;Copyright HealthMate 2026</p>
-                </div>
+                </motion.div>
             </div>
         </footer>
     );

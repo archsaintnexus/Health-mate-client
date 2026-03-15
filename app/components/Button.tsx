@@ -14,16 +14,19 @@ export function Button({
     className = '',
     ...props
 }: ButtonProps) {
-    const baseStyles = "px-6 py-2.5 rounded-md font-semibold text-sm transition-colors duration-200 ease-in-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2";
+    const baseStyles = "px-7 py-2 rounded-md font-semibold transition-colors duration-200 ease-in-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2";
 
     const variants = {
         solid: "bg-primary hover:bg-primary-hover text-white border border-transparent",
-        outline: "bg-transparent hover:bg-accent text-foreground border border-foreground/30",
+        outline: "bg-transparent hover:bg-accent text-foreground border border-primary",
     };
+
+    const hasTextSize = /\btext-(xs|sm|base|lg|xl|[2-9]xl)\b/.test(className);
+    const finalClassName = `${baseStyles} ${hasTextSize ? '' : 'text-sm'} ${variants[variant]} ${className}`;
 
     return (
         <button
-            className={`${baseStyles} ${variants[variant]} ${className}`}
+            className={finalClassName}
             {...props}
         >
             {children}

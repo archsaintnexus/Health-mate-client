@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HealthMate
 
-## Getting Started
+HealthMate is a modern, responsive digital health platform designed to bridge the gap between patients and healthcare providers. It offers a seamless experience for finding doctors, booking consultations, and managing medical records securely.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **24/7 Access to Doctors**: Connect with board-certified professionals anytime.
+- **Online Consultations**: Get expert medical advice from the comfort of your home.
+- **Find Doctors, Labs, and Pharmacies**: Easily locate nearby medical services.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Secure & Private**: Prioritizes data encryption and patient confidentiality.
+- **Interactive FAQ**: Dynamic accordion for quick answers to common questions.
+- **Contact Integration**: Easy-to-use contact form for inquiries.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **Library**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) (in Navbar)
+
+## 📁 Project Structure
+
+```text
+app/
+├── auth/            # Authentication related pages (if any)
+├── components/      # Reusable UI components (Button, IconWrapper, etc.)
+├── homepage/        # Homepage sections (Hero, Features, FAQ, Contact)
+├── layout/          # Layout components (Navbar, Footer)
+├── globals.css      # Global styles and Tailwind configuration
+├── layout.tsx       # Root layout
+└── page.tsx         # Main entry point
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js (Latest LTS recommended)
+- npm or yarn
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧩 Core Components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **`Button.tsx`**: A standardized button component with 'solid' and 'outline' variants.
+- **`IconWrapper.tsx`**: A utility component to wrap and style icons consistently across the application, support variants like 'circle', 'default', and 'simple'.
+
+---
+
+© 2026 HealthMate. All rights reserved.
